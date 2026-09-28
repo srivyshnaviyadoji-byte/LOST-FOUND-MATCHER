@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="form-container">
+
+    <h1>
+        Report {{ report_type|capitalize }} Item
+    </h1>
+
+    {% if error %}
+
+    <div class="error">
+        {{ error }}
+    </div>
+
+    {% endif %}
+
+    <form method="POST">
+
+        <label>
+            Category
+        </label>
+
+        <input
+            type="text"
+            name="category"
+            placeholder="Example: Electronics"
+            required
+        >
+
+        <label>
+            Description
+        </label>
+
+        <textarea
+            name="description"
+            placeholder="Describe the item"
+            required
+        ></textarea>
+
+        <label>
+            Location
+        </label>
+
+        <input
+            type="text"
+            name="location"
+            placeholder="Example: Metro Station"
+            required
+        >
+
+        <label>
+            Date
+        </label>
+
+        <input
+            type="date"
+            name="date"
+            required
+        >
+
+        <button type="submit">
+            Submit Report
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

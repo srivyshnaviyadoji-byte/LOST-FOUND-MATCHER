@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>
+    Search Reports
+</h1>
+
+<form method="GET" class="search-form">
+
+    <input
+        type="text"
+        name="category"
+        placeholder="Category"
+        value="{{ category }}"
+    >
+
+    <input
+        type="text"
+        name="location"
+        placeholder="Location"
+        value="{{ location }}"
+    >
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+
+<h2>
+    Results
+</h2>
+
+<div class="cards">
+
+    {% for result in results %}
+
+    <div class="card">
+
+        <span class="tag">
+            {{ result.type|upper }}
+        </span>
+
+        <h3>
+            {{ result.item.category }}
+        </h3>
+
+        <p>
+            {{ result.item.description }}
+        </p>
+
+        <p>
+            <strong>ID:</strong>
+            {{ result.item.id }}
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            {{ result.item.location }}
+        </p>
+
+        <p>
+            <strong>Date:</strong>
+            {{ result.item.date }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ result.item.status }}
+        </p>
+
+    </div>
+
+    {% else %}
+
+    <p>
+        No matching reports found.
+    </p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

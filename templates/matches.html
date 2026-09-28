@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>
+    Possible Matches
+</h1>
+
+<div class="card">
+
+    <h2>
+        Lost Report {{ lost_item.id }}
+    </h2>
+
+    <p>
+        <strong>Category:</strong>
+        {{ lost_item.category }}
+    </p>
+
+    <p>
+        <strong>Description:</strong>
+        {{ lost_item.description }}
+    </p>
+
+    <p>
+        <strong>Location:</strong>
+        {{ lost_item.location }}
+    </p>
+
+</div>
+
+
+{% if matches %}
+
+    {% for match in matches %}
+
+    <div class="match-card">
+
+        <h2>
+            Possible Match
+        </h2>
+
+        <p>
+            Found Report:
+            <strong>
+                {{ match.found_id }}
+            </strong>
+        </p>
+
+        <p>
+            Category Match:
+            {{ "Yes" if match.category_match else "No" }}
+        </p>
+
+        <p>
+            Location Match:
+            {{ "Yes" if match.location_match else "No" }}
+        </p>
+
+        <p>
+            Common Keywords:
+            {{ match.common_keywords|join(", ") }}
+        </p>
+
+        <div class="score">
+
+            {{ match.score }}%
+
+        </div>
+
+        <p>
+            Confidence:
+            <strong>
+                {{ match.confidence }}
+            </strong>
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+<p>
+    No possible matches found.
+</p>
+
+{% endif %}
+
+{% endblock %}

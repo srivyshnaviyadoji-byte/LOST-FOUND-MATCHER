@@ -1,0 +1,38 @@
+{
+    "lost": [
+        {
+            "category": "Electronics",
+            "description": "Black wireless earbuds case",
+            "location": "Metro Station",
+            "date": "2026-09-15",
+            "status": "Open",
+            "id": "L101"
+        },
+        {
+            "category": "Electronics",
+            "description": "LAPTOP",
+            "location": "METRO PILLAR 101C",
+            "date": "2026-09-26",
+            "status": "Open",
+            "id": "L102"
+        }
+    ],
+    "found": [
+        {
+            "category": "Electronics",
+            "description": "Black wireless earbuds case",
+            "location": "Metro Station",
+            "date": "2026-09-15",
+            "status": "Open",
+            "id": "F101"
+        },
+        {
+            "category": "Electronics",
+            "description": "laptop",
+            "location": "metro",
+            "date": "2026-10-27",
+            "status": "Open",
+            "id": "F102"
+        }
+    ]
+}

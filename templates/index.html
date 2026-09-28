@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>
+        Lost & Found Matcher
+    </h1>
+
+    <p>
+        Report lost and found items and
+        discover possible matches.
+    </p>
+
+    <div class="buttons">
+
+        <a
+            class="button"
+            href="{{ url_for('report', report_type='lost') }}"
+        >
+            Report Lost Item
+        </a>
+
+        <a
+            class="button secondary"
+            href="{{ url_for('report', report_type='found') }}"
+        >
+            Report Found Item
+        </a>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2>
+        Open Reports
+    </h2>
+
+    {% for report_type in ["lost", "found"] %}
+
+        <h3>
+            {{ report_type|capitalize }} Items
+        </h3>
+
+        <div class="cards">
+
+            {% for item in data[report_type] %}
+
+                {% if item.status == "Open" %}
+
+                <div class="card">
+
+                    <span class="tag">
+                        {{ item.id }}
+                    </span>
+
+                    <h3>
+                        {{ item.category }}
+                    </h3>
+
+                    <p>
+                        {{ item.description }}
+                    </p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        {{ item.location }}
+                    </p>
+
+                    <p>
+                        <strong>Date:</strong>
+                        {{ item.date }}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        {{ item.status }}
+                    </p>
+
+                    {% if report_type == "lost" %}
+
+                    <a
+                        href="{{ url_for('matches', lost_id=item.id) }}"
+                    >
+                        Find Matches →
+                    </a>
+
+                    {% endif %}
+
+                </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}
